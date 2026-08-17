@@ -101,8 +101,8 @@ function Index() {
           <div className="warm-glow pointer-events-none absolute inset-0" />
           <div className="relative mx-auto grid max-w-6xl gap-16 px-5 pb-24 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pt-24">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
-                <span className="size-1.5 rounded-full bg-primary" />
+              <span className="pill-glow inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
+                <span className="size-1.5 rounded-full bg-primary shadow-[0_0_8px_color-mix(in_oklab,var(--primary)_70%,transparent)]" />
                 Loss aversion, turned into a focus tool
               </span>
               <h1 className="mt-6 font-display text-6xl font-extrabold leading-[0.95] sm:text-7xl">
@@ -121,13 +121,13 @@ function Index() {
               <div className="mt-9 flex flex-wrap items-center gap-5">
                 <a
                   href="#cta"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+                  className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground"
                 >
                   Get Started <ArrowRight className="size-4" />
                 </a>
                 <a
                   href="#science"
-                  className="inline-flex items-center gap-2 text-base font-medium text-foreground underline-offset-8 transition-all hover:underline"
+                  className="btn-outline-premium inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-base font-medium text-foreground"
                 >
                   Learn the Science <ArrowRight className="size-4" />
                 </a>
@@ -161,7 +161,7 @@ function Index() {
             <h2 className="max-w-xl text-4xl font-bold">Three steps. One uncomfortable promise.</h2>
             <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-3">
               {steps.map((s) => (
-                <div key={s.n} className="bg-card p-8">
+                <div key={s.n} className="card-premium bg-card p-8">
                   <span className="font-display text-sm font-semibold text-primary">{s.n}</span>
                   <h3 className="mt-4 text-xl font-semibold">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
@@ -174,7 +174,7 @@ function Index() {
         {/* Features */}
         <section id="features" className="mx-auto max-w-6xl px-5 py-24">
           <div className="grid gap-10 md:grid-cols-2">
-            <div className="flex flex-col justify-between rounded-3xl bg-ink p-10 text-background">
+            <div className="card-dark-premium flex flex-col justify-between rounded-3xl bg-ink p-10 text-background">
               <h2 className="text-4xl font-bold leading-tight">
                 Willpower is a bad plan.
                 <br />
@@ -200,7 +200,7 @@ function Index() {
                   d: "See where the hours actually went, and what each slip cost you.",
                 },
               ].map((f) => (
-                <div key={f.t} className="rounded-2xl border border-border bg-card p-7">
+                <div key={f.t} className="card-premium rounded-2xl border border-border bg-card p-7">
                   <h3 className="text-lg font-semibold">{f.t}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.d}</p>
                 </div>
@@ -219,7 +219,7 @@ function Index() {
             </p>
             <div className="mt-12 grid gap-8 sm:grid-cols-3">
               {stats.map((s) => (
-                <div key={s.label} className="border-t-2 border-primary pt-5">
+                <div key={s.label} className="stat-premium border-t-2 border-primary pt-5">
                   <p className="font-display text-5xl font-extrabold tracking-tight">{s.value}</p>
                   <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
                 </div>
@@ -238,7 +238,7 @@ function Index() {
           </p>
           <a
             href="#cta"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+            className="btn-premium mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-semibold text-primary-foreground"
           >
             Get Started <ArrowUpRight className="size-4" />
           </a>
