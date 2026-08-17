@@ -51,7 +51,7 @@ export function PhoneMockup() {
         <div className="flex items-start justify-between px-5 pb-4 pt-4">
           <div>
             <p className="text-xs text-muted-foreground">Good evening,</p>
-            <p className="font-display text-base font-semibold text-foreground">Sahil 👋</p>
+            <p className="font-display text-base font-semibold text-foreground">Sahil</p>
           </div>
           <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-[11px] font-semibold text-primary-foreground">
             <Plus className="size-3" /> Add App
