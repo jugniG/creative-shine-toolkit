@@ -88,7 +88,7 @@ function Index() {
           </div>
           <a
             href="#cta"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+            className="btn-premium inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
           >
             Get Started <ArrowRight className="size-4" />
           </a>
