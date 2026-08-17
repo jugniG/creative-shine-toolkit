@@ -157,3 +157,31 @@
     color: var(--color-foreground);
   }
 }
+
+@theme inline {
+  --color-ink: var(--ink);
+}
+
+@utility warm-glow {
+  background-image: var(--gradient-warm);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+  body {
+    font-family: var(--font-sans);
+  }
+}
