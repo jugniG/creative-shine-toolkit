@@ -109,8 +109,20 @@
     color-mix(in oklab, var(--primary) 16%, transparent),
     transparent 60%
   );
+  --gradient-shine: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--primary-foreground) 22%, transparent) 0%,
+    transparent 35%,
+    transparent 65%,
+    color-mix(in oklab, var(--primary) 16%, transparent) 100%
+  );
   --shadow-soft: 0 24px 60px -24px color-mix(in oklab, var(--ink) 30%, transparent);
   --shadow-glow: 0 20px 50px -18px color-mix(in oklab, var(--primary) 55%, transparent);
+  --shadow-card: 0 18px 50px -16px color-mix(in oklab, var(--ink) 18%, transparent);
+  --shadow-card-hover: 0 28px 70px -22px color-mix(in oklab, var(--ink) 22%, transparent);
+  --shadow-inner-highlight: inset 0 1px 0 0 color-mix(in oklab, var(--primary-foreground) 16%, transparent);
+  --shadow-border-glow: inset 0 0 0 1px color-mix(in oklab, var(--primary-foreground) 10%, transparent), inset 0 0 0 1px var(--border);
+  --ring-subtle: 0 0 0 1px color-mix(in oklab, var(--primary-foreground) 12%, transparent), 0 0 0 4px color-mix(in oklab, var(--primary) 10%, transparent);
 }
 
 
