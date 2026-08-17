@@ -67,12 +67,7 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-          <a href="/" className="flex items-center gap-2">
-            <span className="grid size-8 place-items-center rounded-lg bg-ink text-primary">
-              <Hourglass className="size-4" />
-            </span>
-            <span className="font-display text-lg font-semibold tracking-tight">Screenly</span>
-          </a>
+          <Logo iconSize="md" />
           <div className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
             <a href="#features" className="transition-colors hover:text-foreground">
               Features
