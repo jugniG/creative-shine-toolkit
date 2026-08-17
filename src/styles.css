@@ -109,8 +109,20 @@
     color-mix(in oklab, var(--primary) 16%, transparent),
     transparent 60%
   );
+  --gradient-shine: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--primary-foreground) 22%, transparent) 0%,
+    transparent 35%,
+    transparent 65%,
+    color-mix(in oklab, var(--primary) 16%, transparent) 100%
+  );
   --shadow-soft: 0 24px 60px -24px color-mix(in oklab, var(--ink) 30%, transparent);
   --shadow-glow: 0 20px 50px -18px color-mix(in oklab, var(--primary) 55%, transparent);
+  --shadow-card: 0 18px 50px -16px color-mix(in oklab, var(--ink) 18%, transparent);
+  --shadow-card-hover: 0 28px 70px -22px color-mix(in oklab, var(--ink) 22%, transparent);
+  --shadow-inner-highlight: inset 0 1px 0 0 color-mix(in oklab, var(--primary-foreground) 16%, transparent);
+  --shadow-border-glow: inset 0 0 0 1px color-mix(in oklab, var(--primary-foreground) 10%, transparent), inset 0 0 0 1px var(--border);
+  --ring-subtle: 0 0 0 1px color-mix(in oklab, var(--primary-foreground) 12%, transparent), 0 0 0 4px color-mix(in oklab, var(--primary) 10%, transparent);
 }
 
 
@@ -188,7 +200,207 @@
     var(--shadow-soft);
 }
 
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility shadow-card-hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+@utility glow-ring {
+  box-shadow: var(--ring-subtle);
+}
+
+@utility inner-highlight {
+  box-shadow: var(--shadow-inner-highlight);
+}
+
 @layer components {
+  .btn-premium {
+    position: relative;
+    isolation: isolate;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, var(--primary-foreground) 40%, transparent) inset,
+      0 0 0 1px color-mix(in oklab, var(--primary-foreground) 12%, transparent),
+      0 0 0 4px color-mix(in oklab, var(--primary) 12%, transparent),
+      var(--shadow-glow);
+  }
+
+  .btn-premium::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--primary-foreground) 14%, transparent) 0%,
+      transparent 40%
+    );
+    pointer-events: none;
+  }
+
+  .btn-premium::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -2;
+    border-radius: inherit;
+    background: radial-gradient(
+      80% 60% at 50% 0%,
+      color-mix(in oklab, var(--primary) 50%, transparent),
+      transparent 70%
+    );
+    opacity: 0.6;
+    filter: blur(10px);
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, var(--primary-foreground) 50%, transparent) inset,
+      0 0 0 1px color-mix(in oklab, var(--primary-foreground) 18%, transparent),
+      0 0 0 5px color-mix(in oklab, var(--primary) 16%, transparent),
+      0 22px 55px -16px color-mix(in oklab, var(--primary) 60%, transparent);
+  }
+
+  .btn-premium:hover::after {
+    opacity: 0.9;
+  }
+
+  .btn-outline-premium {
+    position: relative;
+    isolation: isolate;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow:
+      0 0 0 1px var(--border),
+      0 0 0 2px color-mix(in oklab, var(--primary-foreground) 8%, transparent),
+      inset 0 1px 0 0 color-mix(in oklab, var(--primary-foreground) 10%, transparent),
+      0 10px 30px -18px color-mix(in oklab, var(--ink) 15%, transparent);
+  }
+
+  .btn-outline-premium:hover {
+    transform: translateY(-1.5px);
+    background-color: color-mix(in oklab, var(--primary) 8%, var(--background));
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+      0 0 0 3px color-mix(in oklab, var(--primary) 10%, transparent),
+      inset 0 1px 0 0 color-mix(in oklab, var(--primary-foreground) 14%, transparent),
+      0 16px 40px -18px color-mix(in oklab, var(--primary) 25%, transparent);
+  }
+
+  .card-premium {
+    position: relative;
+    isolation: isolate;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow:
+      var(--shadow-inner-highlight),
+      0 0 0 1px var(--border),
+      0 18px 50px -16px color-mix(in oklab, var(--ink) 14%, transparent);
+  }
+
+  .card-premium::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--gradient-shine);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .card-premium:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      var(--shadow-inner-highlight),
+      0 0 0 1px color-mix(in oklab, var(--primary) 20%, transparent),
+      0 28px 70px -20px color-mix(in oklab, var(--ink) 20%, transparent);
+  }
+
+  .card-dark-premium {
+    position: relative;
+    isolation: isolate;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in oklab, var(--background) 14%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--background) 10%, transparent),
+      0 30px 70px -24px color-mix(in oklab, var(--ink) 45%, transparent);
+  }
+
+  .card-dark-premium::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+      120% 80% at 50% 0%,
+      color-mix(in oklab, var(--background) 10%, transparent),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+
+  .card-dark-premium:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in oklab, var(--background) 18%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--background) 14%, transparent),
+      0 36px 80px -24px color-mix(in oklab, var(--ink) 55%, transparent);
+  }
+
+  .pill-glow {
+    position: relative;
+    isolation: isolate;
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in oklab, var(--primary-foreground) 12%, transparent),
+      0 0 0 1px var(--border),
+      0 8px 24px -12px color-mix(in oklab, var(--ink) 14%, transparent);
+  }
+
+  .pill-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+      70% 60% at 50% 0%,
+      color-mix(in oklab, var(--primary) 20%, transparent),
+      transparent 70%
+    );
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .stat-premium {
+    position: relative;
+    transition: transform 0.25s ease;
+  }
+
+  .stat-premium::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--primary),
+      color-mix(in oklab, var(--primary) 40%, transparent)
+    );
+    box-shadow: 0 0 16px color-mix(in oklab, var(--primary) 40%, transparent);
+  }
+
+  .stat-premium:hover {
+    transform: translateY(-2px);
+  }
+
   .phone-aurora {
     position: relative;
     isolation: isolate;

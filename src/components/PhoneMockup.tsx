@@ -54,14 +54,17 @@ export function PhoneMockup() {
               <p className="text-xs text-muted-foreground">Good evening,</p>
               <p className="font-display text-base font-semibold text-foreground">Sahil</p>
             </div>
-            <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-[11px] font-semibold text-primary-foreground">
+            <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-[11px] font-semibold text-primary-foreground shadow-[0_0_0_1px_color-mix(in_oklab,var(--primary-foreground)_20%,transparent),0_4px_12px_-4px_color-mix(in_oklab,var(--primary)_60%,transparent),inset_0_1px_0_0_color-mix(in_oklab,var(--primary-foreground)_25%,transparent)]">
               <Plus className="size-3" /> Add App
             </span>
           </div>
 
           <div className="space-y-3 px-4 pb-6">
             {rows.map((row) => (
-              <div key={row.name} className="rounded-2xl border border-border bg-background p-3">
+              <div
+                key={row.name}
+                className="rounded-2xl border border-border bg-background p-3 shadow-[0_4px_14px_-6px_color-mix(in_oklab,var(--ink)_12%,transparent),inset_0_1px_0_0_color-mix(in_oklab,var(--primary-foreground)_8%,transparent)]"
+              >
                 <div className="flex items-center gap-3">
                   <span
                     className={`grid size-8 place-items-center rounded-lg text-sm text-primary-foreground ${row.tint}`}
