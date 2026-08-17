@@ -9,6 +9,7 @@ import {
   Hourglass,
 } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";
+import { Logo } from "@/components/Logo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
