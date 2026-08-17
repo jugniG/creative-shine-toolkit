@@ -41,57 +41,59 @@ const rows: AppRow[] = [
 
 export function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-[280px] rounded-[2.6rem] border-[10px] border-ink bg-ink shadow-soft sm:w-[320px]">
-      <div className="overflow-hidden rounded-[2rem] bg-card">
-        <div className="flex items-center justify-between px-5 pt-3 text-[10px] font-medium text-muted-foreground">
-          <span>7:24</span>
-          <span className="tracking-tight">••• ▲ ▮</span>
-        </div>
-
-        <div className="flex items-start justify-between px-5 pb-4 pt-4">
-          <div>
-            <p className="text-xs text-muted-foreground">Good evening,</p>
-            <p className="font-display text-base font-semibold text-foreground">Sahil</p>
+    <div className="phone-aurora float">
+      <div className="relative mx-auto w-[280px] rounded-[2.6rem] border-[10px] border-ink bg-ink shadow-soft bezel-glow sm:w-[320px]">
+        <div className="glass-reflection overflow-hidden rounded-[2rem] bg-card">
+          <div className="flex items-center justify-between px-5 pt-3 text-[10px] font-medium text-muted-foreground">
+            <span>7:24</span>
+            <span className="tracking-tight">••• ▲ ▮</span>
           </div>
-          <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-[11px] font-semibold text-primary-foreground">
-            <Plus className="size-3" /> Add App
-          </span>
-        </div>
 
-        <div className="space-y-3 px-4 pb-6">
-          {rows.map((row) => (
-            <div key={row.name} className="rounded-2xl border border-border bg-background p-3">
-              <div className="flex items-center gap-3">
-                <span
-                  className={`grid size-8 place-items-center rounded-lg text-sm text-primary-foreground ${row.tint}`}
-                >
-                  {row.glyph}
-                </span>
-                <span className="flex-1 text-sm font-medium text-foreground">{row.name}</span>
-                <span className="text-xs text-muted-foreground">{row.limit}</span>
-              </div>
-              <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted">
-                <div
-                  className={`h-full rounded-full ${row.danger ? "bg-destructive" : "bg-primary"}`}
-                  style={{ width: `${row.progress}%` }}
-                />
-              </div>
-              <p
-                className={`mt-1.5 text-right text-[10px] ${row.danger ? "text-destructive" : "text-muted-foreground"}`}
-              >
-                {row.used}
-              </p>
+          <div className="flex items-start justify-between px-5 pb-4 pt-4">
+            <div>
+              <p className="text-xs text-muted-foreground">Good evening,</p>
+              <p className="font-display text-base font-semibold text-foreground">Sahil</p>
             </div>
-          ))}
-        </div>
+            <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-[11px] font-semibold text-primary-foreground">
+              <Plus className="size-3" /> Add App
+            </span>
+          </div>
 
-        <div className="flex items-center justify-around border-t border-border py-3 text-[10px]">
-          <span className="flex flex-col items-center gap-0.5 text-primary">
-            <Home className="size-4" /> Home
-          </span>
-          <span className="flex flex-col items-center gap-0.5 text-muted-foreground">
-            <User className="size-4" /> Account
-          </span>
+          <div className="space-y-3 px-4 pb-6">
+            {rows.map((row) => (
+              <div key={row.name} className="rounded-2xl border border-border bg-background p-3">
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`grid size-8 place-items-center rounded-lg text-sm text-primary-foreground ${row.tint}`}
+                  >
+                    {row.glyph}
+                  </span>
+                  <span className="flex-1 text-sm font-medium text-foreground">{row.name}</span>
+                  <span className="text-xs text-muted-foreground">{row.limit}</span>
+                </div>
+                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted">
+                  <div
+                    className={`h-full rounded-full ${row.danger ? "bg-destructive" : "bg-primary"}`}
+                    style={{ width: `${row.progress}%` }}
+                  />
+                </div>
+                <p
+                  className={`mt-1.5 text-right text-[10px] ${row.danger ? "text-destructive" : "text-muted-foreground"}`}
+                >
+                  {row.used}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-around border-t border-border py-3 text-[10px]">
+            <span className="flex flex-col items-center gap-0.5 text-primary">
+              <Home className="size-4" /> Home
+            </span>
+            <span className="flex flex-col items-center gap-0.5 text-muted-foreground">
+              <User className="size-4" /> Account
+            </span>
+          </div>
         </div>
       </div>
     </div>

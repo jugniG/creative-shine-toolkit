@@ -151,7 +151,6 @@ function Index() {
             </div>
 
             <div className="relative">
-              <div className="absolute inset-x-6 bottom-6 top-16 rounded-[3rem] bg-accent/70" />
               <div className="relative pt-6">
                 <PhoneMockup />
               </div>
