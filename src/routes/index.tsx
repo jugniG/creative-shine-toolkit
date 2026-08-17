@@ -159,9 +159,9 @@ function Index() {
         <section id="how" className="border-y border-border bg-card">
           <div className="mx-auto max-w-6xl px-5 py-20">
             <h2 className="max-w-xl text-4xl font-bold">Three steps. One uncomfortable promise.</h2>
-            <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-3">
+            <div className="mt-12 grid gap-4 md:grid-cols-3">
               {steps.map((s) => (
-                <div key={s.n} className="card-premium bg-card p-8">
+                <div key={s.n} className="card-premium rounded-3xl bg-card p-8">
                   <span className="font-display text-sm font-semibold text-primary">{s.n}</span>
                   <h3 className="mt-4 text-xl font-semibold">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
