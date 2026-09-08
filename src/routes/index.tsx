@@ -146,7 +146,7 @@ function Index() {
               </dl>
             </div>
 
-            <div className="relative">
+            <div className="relative min-w-0">
               <div className="relative pt-6">
                 <PhoneMockup />
               </div>
