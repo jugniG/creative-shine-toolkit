@@ -282,7 +282,7 @@ export function PhoneMockup() {
             className={`h-2 rounded-full transition-all duration-300 ${
               i === active
                 ? "w-7 bg-primary shadow-[0_0_10px_color-mix(in_oklab,var(--primary)_60%,transparent)]"
-                : "w-2 bg-border hover:bg-primary/50"
+                : "w-2 bg-ink/25 hover:bg-primary/60"
             }`}
           />
         ))}
