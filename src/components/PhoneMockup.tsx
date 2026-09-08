@@ -249,8 +249,9 @@ export function PhoneMockup() {
   }, [active]);
 
   return (
-    <div className="phone-aurora">
-      <div className="overflow-hidden px-2 py-4">
+    <div className="phone-aurora mx-auto w-full max-w-[340px]">
+      <div className="overflow-hidden py-4">
+
         <div
           className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
           style={{ transform: `translateX(-${active * 100}%)` }}
