@@ -203,7 +203,42 @@ function Leaderboard() {
   );
 }
 
-const screens = [ScreenTime, Limits, Leaderboard];
+const screens = [
+  { Screen: ScreenTime, label: "Screen time" },
+  { Screen: Limits, label: "Limits" },
+  { Screen: Leaderboard, label: "Leaderboard" },
+];
+
+function Phone({ children, activeTab }: { children: React.ReactNode; activeTab: number }) {
+  return (
+    <div className="relative mx-auto w-[280px] rounded-[2.6rem] border-[10px] border-ink bg-ink shadow-soft bezel-glow sm:w-[320px]">
+      <div className="glass-reflection overflow-hidden rounded-[2rem] bg-card">
+        <div className="flex items-center justify-between px-5 pt-3 text-[10px] font-medium text-muted-foreground">
+          <span>7:24</span>
+          <span className="tracking-tight">••• ▲ ▮</span>
+        </div>
+
+        <div className="min-h-[460px] pt-4">{children}</div>
+
+        <div className="flex items-center justify-around border-t border-border py-3 text-[9px]">
+          {TABS.map((t, i) => {
+            const Icon = t.icon;
+            return (
+              <span
+                key={t.label}
+                className={`flex flex-col items-center gap-0.5 ${
+                  i === activeTab ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
+                <Icon className="size-4" /> {t.label}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function PhoneMockup() {
   const [active, setActive] = useState(1);
@@ -211,51 +246,47 @@ export function PhoneMockup() {
   useEffect(() => {
     const id = setInterval(() => setActive((a) => (a + 1) % screens.length), DURATION);
     return () => clearInterval(id);
-  }, []);
+  }, [active]);
 
   return (
-    <div className="phone-aurora float">
-      <div className="relative mx-auto w-[280px] rounded-[2.6rem] border-[10px] border-ink bg-ink shadow-soft bezel-glow sm:w-[320px]">
-        <div className="glass-reflection overflow-hidden rounded-[2rem] bg-card">
-          <div className="flex items-center justify-between px-5 pt-3 text-[10px] font-medium text-muted-foreground">
-            <span>7:24</span>
-            <span className="tracking-tight">••• ▲ ▮</span>
-          </div>
-
-          <div className="overflow-hidden pt-4">
+    <div className="phone-aurora">
+      <div className="overflow-hidden px-2 py-4">
+        <div
+          className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          style={{ transform: `translateX(-${active * 100}%)` }}
+        >
+          {screens.map(({ Screen }, i) => (
             <div
-              className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              style={{ transform: `translateX(-${active * 100}%)` }}
+              key={i}
+              className={`w-full shrink-0 transition-all duration-700 ${
+                i === active ? "scale-100 opacity-100 blur-0" : "scale-90 opacity-40 blur-[1px]"
+              }`}
             >
-              {screens.map((Screen, i) => (
-                <div key={i} className="w-full shrink-0">
-                  <Screen />
-                </div>
-              ))}
+              <Phone activeTab={i}>
+                <Screen />
+              </Phone>
             </div>
-          </div>
-
-          <div className="flex items-center justify-around border-t border-border py-3 text-[9px]">
-            {TABS.map((t, i) => {
-              const Icon = t.icon;
-              const on = i === active;
-              return (
-                <button
-                  key={t.label}
-                  type="button"
-                  onClick={() => setActive(i)}
-                  aria-label={t.label}
-                  className={`flex flex-col items-center gap-0.5 transition-colors ${
-                    on ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
-                  <Icon className="size-4" /> {t.label}
-                </button>
-              );
-            })}
-          </div>
+          ))}
         </div>
+      </div>
+
+      <div className="mt-6 flex items-center justify-center gap-2.5">
+        {screens.map((s, i) => (
+          <button
+            key={s.label}
+            type="button"
+            onClick={() => setActive(i)}
+            aria-label={s.label}
+            aria-current={i === active}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === active
+                ? "w-7 bg-primary shadow-[0_0_10px_color-mix(in_oklab,var(--primary)_60%,transparent)]"
+                : "w-2 bg-border hover:bg-primary/50"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
 }
+
