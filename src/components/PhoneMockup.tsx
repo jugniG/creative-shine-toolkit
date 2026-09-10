@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { BarChart3, Home, Trophy, Plus, ChevronLeft, ChevronRight, UserPlus, Crown } from "lucide-react";
 
 type AppRow = {
