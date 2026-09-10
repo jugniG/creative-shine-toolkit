@@ -150,7 +150,7 @@ function Index() {
               <div className="relative pt-6">
                 <PhoneMockup />
               </div>
-              <div className="mx-auto mt-[-2rem] h-10 w-3/4 rounded-[50%] bg-ink/15 blur-xl" />
+              <div className="pointer-events-none mx-auto mt-[-2rem] h-10 w-3/4 rounded-[50%] bg-ink/15 blur-xl" />
             </div>
           </div>
         </section>

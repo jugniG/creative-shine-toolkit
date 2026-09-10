@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { BarChart3, Home, Trophy, Plus, ChevronLeft, ChevronRight, UserPlus, Crown } from "lucide-react";
 
 type AppRow = {
@@ -242,16 +242,33 @@ function Phone({ children, activeTab }: { children: React.ReactNode; activeTab: 
 
 export function PhoneMockup() {
   const [active, setActive] = useState(1);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const goTo = useCallback((index: number) => {
+    setActive(index);
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+    timerRef.current = setInterval(
+      () => setActive((a) => (a + 1) % screens.length),
+      DURATION
+    );
+  }, []);
 
   useEffect(() => {
-    const id = setInterval(() => setActive((a) => (a + 1) % screens.length), DURATION);
-    return () => clearInterval(id);
-  }, [active]);
+    timerRef.current = setInterval(
+      () => setActive((a) => (a + 1) % screens.length),
+      DURATION
+    );
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
 
   return (
     <div className="phone-aurora mx-auto w-full max-w-[340px]">
       <div className="overflow-hidden py-4">
-
         <div
           className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
           style={{ transform: `translateX(-${active * 100}%)` }}
@@ -276,7 +293,7 @@ export function PhoneMockup() {
           <button
             key={s.label}
             type="button"
-            onClick={() => setActive(i)}
+            onClick={() => goTo(i)}
             aria-label={s.label}
             aria-current={i === active}
             className={`h-2 rounded-full transition-all duration-300 ${
