@@ -45,33 +45,62 @@ const pillars = [
   { icon: Github, title: "Open source", sub: "audit every line of code" },
 ];
 
-const storyBeats = [
-  {
-    n: "01",
-    title: "The best revolution, gone sideways",
-    body: "Mobiles are the best tech revolution in the history of humankind. But somewhere along the way, they became the biggest thieves of our time.",
-  },
-  {
-    n: "02",
-    title: "The 8am promise",
-    body: "Every morning, you have good intentions. You know exactly what you'd rather do with your evening, and you mean it.",
-  },
-  {
-    n: "03",
-    title: "Then 9pm happens",
-    body: "A plan made at 8am has to survive 9pm, when you're tired and nothing is at stake. That isn't a character flaw — it's a design problem: there's no reason for tonight's you to keep the morning's promise.",
-  },
-  {
-    n: "04",
-    title: "The instinct we can use",
-    body: "Psychologists have found that losing something feels roughly twice as strong as gaining the same thing. It's why you'd never forget to move your car before it gets towed.",
-  },
-  {
-    n: "05",
-    title: "The flip",
-    body: "Screenly puts a little something on the line. Now the evening version of you has a reason to agree with the morning version — and every cent you don't lose stays yours.",
-  },
-];
+type FlowNodeVariant = "neutral" | "danger" | "win";
+
+function FlowNode({
+  icon: Icon,
+  title,
+  sub,
+  variant = "neutral",
+}: {
+  icon: typeof Sunrise;
+  title: string;
+  sub?: string;
+  variant?: FlowNodeVariant;
+}) {
+  const styles: Record<FlowNodeVariant, string> = {
+    neutral: "border-border bg-card text-foreground card-premium",
+    danger: "border border-dashed border-destructive/40 bg-card text-foreground",
+    win: "border-transparent bg-ink text-background card-dark-premium",
+  };
+  const iconStyles: Record<FlowNodeVariant, string> = {
+    neutral: "bg-secondary text-foreground",
+    danger: "bg-destructive/10 text-destructive",
+    win: "bg-primary text-primary-foreground",
+  };
+
+  return (
+    <div
+      className={`flex w-full max-w-[230px] flex-col items-center rounded-2xl px-4 py-4 text-center shadow-card ${styles[variant]}`}
+    >
+      <span
+        className={`flex size-9 items-center justify-center rounded-xl ${iconStyles[variant]}`}
+      >
+        <Icon className="size-4.5" />
+      </span>
+      <p className="mt-3 text-sm font-semibold leading-snug">{title}</p>
+      {sub ? (
+        <p className="mt-1 text-xs leading-snug text-muted-foreground">{sub}</p>
+      ) : null}
+    </div>
+  );
+}
+
+function FlowLine({ label }: { label?: string }) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="h-5 w-px bg-ink/20" />
+      {label ? (
+        <>
+          <span className="-my-1 rounded-full border border-border bg-card px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground pill-glow">
+            {label}
+          </span>
+          <div className="h-5 w-px bg-ink/20" />
+        </>
+      ) : null}
+    </div>
+  );
+}
 
 const steps = [
   {
