@@ -7,6 +7,12 @@ import {
   CircleDollarSign,
   TriangleAlert,
   Hourglass,
+  Sunrise,
+  MoonStar,
+  Lock,
+  Smartphone,
+  XCircle,
+  BadgeCheck,
 } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";
 import { Logo } from "@/components/Logo";
