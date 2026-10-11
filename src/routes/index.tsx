@@ -39,10 +39,32 @@ const pillars = [
   { icon: Github, title: "Open source", sub: "audit every line of code" },
 ];
 
-const stats = [
-  { value: "4h 12m", label: "Average daily phone use" },
-  { value: "58 days", label: "To rewire a habit loop" },
-  { value: "3.2×", label: "Follow-through with stakes" },
+const storyBeats = [
+  {
+    n: "01",
+    title: "The best revolution, gone sideways",
+    body: "Mobiles are the best tech revolution in the history of humankind. But somewhere along the way, they became the biggest thieves of our time.",
+  },
+  {
+    n: "02",
+    title: "The 8am promise",
+    body: "Every morning, you have good intentions. You know exactly what you'd rather do with your evening, and you mean it.",
+  },
+  {
+    n: "03",
+    title: "Then 9pm happens",
+    body: "A plan made at 8am has to survive 9pm, when you're tired and nothing is at stake. That isn't a character flaw — it's a design problem: there's no reason for tonight's you to keep the morning's promise.",
+  },
+  {
+    n: "04",
+    title: "The instinct we can use",
+    body: "Psychologists have found that losing something feels roughly twice as strong as gaining the same thing. It's why you'd never forget to move your car before it gets towed.",
+  },
+  {
+    n: "05",
+    title: "The flip",
+    body: "Screenly puts a little something on the line. Now the evening version of you has a reason to agree with the morning version — and every cent you don't lose stays yours.",
+  },
 ];
 
 const steps = [
@@ -103,7 +125,7 @@ function Index() {
             <div>
               <span className="pill-glow inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
                 <span className="size-1.5 rounded-full bg-primary shadow-[0_0_8px_color-mix(in_oklab,var(--primary)_70%,transparent)]" />
-                Loss aversion, turned into a focus tool
+                Real stakes, real focus
               </span>
               <h1 className="mt-6 font-display text-6xl font-extrabold leading-[0.95] sm:text-7xl">
                 Make your day
@@ -209,21 +231,57 @@ function Index() {
           </div>
         </section>
 
-        {/* Science */}
+        {/* Science — story */}
         <section id="science" className="border-y border-border bg-accent/50">
-          <div className="mx-auto max-w-6xl px-5 py-20">
-            <h2 className="text-4xl font-bold">The science, briefly.</h2>
-            <p className="mt-3 max-w-lg text-muted-foreground">
-              People work roughly twice as hard to avoid losing something as they do to gain it.
-              Screenly points that instinct at your screentime.
-            </p>
-            <div className="mt-12 grid gap-8 sm:grid-cols-3">
-              {stats.map((s) => (
-                <div key={s.label} className="stat-premium border-t-2 border-primary pt-5">
-                  <p className="font-display text-5xl font-extrabold tracking-tight">{s.value}</p>
-                  <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
+          <div className="mx-auto grid max-w-6xl gap-14 px-5 py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+            <div className="lg:sticky lg:top-24 lg:self-start">
+              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">
+                The science, briefly
+              </span>
+              <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">
+                Why a few dollars beats a lot of willpower.
+              </h2>
+              <p className="mt-5 max-w-md leading-relaxed text-muted-foreground">
+                Losing something feels about twice as bad as gaining the same thing feels good.
+                Screenly puts that instinct on your side.
+              </p>
+              <div className="card-premium mt-10 rounded-3xl bg-card p-8 text-center">
+                <p className="font-display text-7xl font-extrabold tracking-tight text-primary sm:text-8xl">
+                  +21%
+                </p>
+                <p className="mt-3 text-sm font-semibold leading-snug">
+                  more follow-through when people commit money to their goals
+                </p>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Randomized trial · 1,629 participants
+                </p>
+                <div className="mt-6 flex items-center justify-center gap-6 border-t border-border pt-5 text-xs text-muted-foreground">
+                  <span>$1 minimum stake</span>
+                  <span className="size-1 rounded-full bg-border" aria-hidden />
+                  <span>2 minutes to set up</span>
                 </div>
-              ))}
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="relative space-y-10">
+                {storyBeats.map((beat) => (
+                  <div key={beat.n} className="relative flex gap-6">
+                    <span className="stat-premium flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-card pt-px font-display text-sm font-bold text-primary shadow-card">
+                      {beat.n}
+                    </span>
+                    <div className="min-w-0 pb-1">
+                      <h3 className="font-display text-xl font-semibold">{beat.title}</h3>
+                      <p className="mt-2 max-w-lg leading-relaxed text-muted-foreground">
+                        {beat.body}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-14 max-w-md border-l-2 border-primary pl-5 font-display text-2xl font-semibold leading-snug">
+                Not more willpower. A better deal with yourself.
+              </p>
             </div>
           </div>
         </section>
