@@ -266,19 +266,19 @@ function Index() {
           </div>
         </section>
 
-        {/* Science — story */}
+        {/* Science — flowchart */}
         <section id="science" className="border-y border-border bg-accent/50">
           <div className="mx-auto grid max-w-6xl gap-14 px-5 py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             <div className="lg:sticky lg:top-24 lg:self-start">
               <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">
-                The science, briefly
+                The science, in one picture
               </span>
               <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">
                 Why a few dollars beats a lot of willpower.
               </h2>
-              <p className="mt-5 max-w-md leading-relaxed text-muted-foreground">
-                Losing something feels about twice as bad as gaining the same thing feels good.
-                Screenly puts that instinct on your side.
+              <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                Losing stings about twice as much as winning feels good — Screenly puts that
+                instinct on your side.
               </p>
               <div className="card-premium mt-10 rounded-3xl bg-card p-8 text-center">
                 <p className="font-display text-7xl font-extrabold tracking-tight text-primary sm:text-8xl">
@@ -298,23 +298,38 @@ function Index() {
               </div>
             </div>
 
-            <div className="relative">
-              <div className="relative space-y-10">
-                {storyBeats.map((beat) => (
-                  <div key={beat.n} className="relative flex gap-6">
-                    <span className="stat-premium flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-card pt-px font-display text-sm font-bold text-primary shadow-card">
-                      {beat.n}
-                    </span>
-                    <div className="min-w-0 pb-1">
-                      <h3 className="font-display text-xl font-semibold">{beat.title}</h3>
-                      <p className="mt-2 max-w-lg leading-relaxed text-muted-foreground">
-                        {beat.body}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+            <div className="relative flex flex-col items-center">
+              <FlowNode icon={Sunrise} title="8:00 AM — You make the promise" sub="Tonight, you'll finally read / gym / sleep early." />
+              <FlowLine label="12 hours later" />
+              <FlowNode icon={MoonStar} title="9:00 PM — Tired. Tempted." sub="Nothing is at stake — the promise has no teeth." />
+
+              {/* Branch split */}
+              <div className="mx-auto h-6 w-px bg-ink/20" />
+              <div className="relative grid w-full grid-cols-2 gap-3 sm:gap-6">
+                <div className="pointer-events-none absolute left-1/4 right-1/4 top-0 h-px bg-ink/20" />
+                {/* Without Screenly */}
+                <div className="flex flex-col items-center">
+                  <div className="h-6 w-px bg-ink/20" />
+                  <span className="mb-3 rounded-full border border-border bg-card px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground pill-glow">
+                    Without Screenly
+                  </span>
+                  <FlowNode icon={Smartphone} title="&ldquo;Just five more minutes&rdquo;" sub="No one and nothing stops you." variant="danger" />
+                  <FlowLine />
+                  <FlowNode icon={XCircle} title="Hours gone" sub="And the promise resets for tomorrow." variant="danger" />
+                </div>
+                {/* With Screenly */}
+                <div className="flex flex-col items-center">
+                  <div className="h-6 w-px bg-ink/20" />
+                  <span className="mb-3 rounded-full border border-border bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground pill-glow">
+                    With Screenly
+                  </span>
+                  <FlowNode icon={Lock} title="Apps lock. Money's at stake." sub="You put a small amount on the line at 8 AM." />
+                  <FlowLine />
+                  <FlowNode icon={BadgeCheck} title="You keep the hours" sub="…and every cent of your stake." variant="win" />
+                </div>
               </div>
-              <p className="mt-14 max-w-md border-l-2 border-primary pl-5 font-display text-2xl font-semibold leading-snug">
+
+              <p className="mt-12 max-w-md border-l-2 border-primary pl-5 font-display text-2xl font-semibold leading-snug">
                 Not more willpower. A better deal with yourself.
               </p>
             </div>
